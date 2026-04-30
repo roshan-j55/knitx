@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KNITX | AI Fabric Defect Detection</title>
+    <meta name="description" content="Real-time defect detection for faster, smarter textile quality control powered by AI.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <a href="#" class="logo">
+                KNITX <span class="logo-dot"></span>
+            </a>
+            <nav class="nav-links">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#product" class="nav-link">Product</a>
+                <a href="#technology" class="nav-link">Technology</a>
+                <a href="#use-cases" class="nav-link">Use Cases</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="dashboard.html" class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Live Dashboard</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero" style="min-height: 100vh; display: flex; align-items: center; padding-top: var(--header-height); background: var(--bg-primary);">
+        <div class="container text-center">
+            <div class="hero-content reveal-left" style="max-width: 800px; margin: 0 auto;">
+                <span class="badge mb-4">Detecting Defects,Defining Quality</span>
+                <h1 class="mb-4">Smart Fabric Inspection <br><span class="text-accent">Powered by AI</span></h1>
+                <p class="mb-8">Real-time defect detection for faster, smarter textile quality control. Eliminate manual errors and maximize product quality with our edge AI solutions.</p>
+                <div style="display: flex; gap: 1rem; justify-content: center;">
+                    <a href="#contact" class="btn btn-primary">Request Demo</a>
+                    <a href="#product" class="btn btn-outline">Explore Features</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" style="background-color: var(--bg-primary);">
+        <div class="container grid-2">
+            <div class="reveal-left">
+                <span class="badge mb-4">About Us</span>
+                <h2 class="mb-4">Pioneering the Future of Textile Quality</h2>
+                <p>At KNITX, we are merging cutting-edge computer vision with deep learning to revolutionize how fabrics are inspected. We understand the bottleneck that manual inspection creates in high-speed manufacturing environments.</p>
+                <div style="display: flex; gap: 2rem; margin-top: 2rem;">
+                    <div>
+                        <h3 class="text-accent mb-2"><i class="fa-solid fa-bullseye"></i> Mission</h3>
+                        <p style="font-size: 0.9rem;">To completely eliminate manual inspection errors and streamline the textile supply chain.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-accent mb-2"><i class="fa-solid fa-eye"></i> Vision</h3>
+                        <p style="font-size: 0.9rem;">To become the undisputed global leader in AI-driven textile inspection systems.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-2 reveal-right" style="gap: 1rem;">
+                <div class="card" style="padding: 1.5rem; text-align: center;">
+                    <h2 class="text-accent mb-2">90%</h2>
+                    <p style="font-size: 0.9rem; margin:0;">Detection Accuracy</p>
+                </div>
+                <div class="card" style="padding: 1.5rem; text-align: center;">
+                    <h2 class="text-accent mb-2">15</h2>
+                    <p style="font-size: 0.9rem; margin:0;">Frames Per Second</p>
+                </div>
+                <div class="card" style="padding: 1.5rem; text-align: center; grid-column: span 2;">
+                    <h2 class="text-accent mb-2">24/7</h2>
+                    <p style="font-size: 0.9rem; margin:0;">Automated Monitoring</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Section -->
+    <section id="product" style="background-color: var(--bg-secondary);">
+        <div class="container text-center mb-12 reveal">
+            <span class="badge mb-4">Our Product</span>
+            <h2>AI Fabric Defect Detection System</h2>
+            <p style="max-width: 600px; margin: 0 auto;">A plug-and-play edge AI camera module that mounts directly onto your existing production lines.</p>
+        </div>
+        <div class="container grid-2" style="margin-bottom: 4rem; align-items: center;">
+            <div class="reveal-left" style="padding-right: 1.5rem;">
+                <img src="assets/images/machine.png" alt="KNITX AI Camera Module Visualization" style="width: 100%; max-width: 550px; height: auto; border-radius: 16px; border: 1px solid var(--border-color); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); display: block; margin: 0 auto;">
+            </div>
+            <div class="reveal-right" style="display: flex; flex-direction: column; justify-content: center;">
+                <ul style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <li style="display: flex; gap: 1rem; align-items: flex-start;">
+                        <div class="card-icon" style="width: 40px; height: 40px; margin-bottom: 0; font-size: 1rem;"><i class="fa-solid fa-bolt"></i></div>
+                        <div>
+                            <h3 class="mb-2">Real-time Detection (10-15 FPS)</h3>
+                            <p style="font-size: 0.95rem; margin:0;">High-speed inference on edge devices ensures defects are caught immediately without slowing down production.</p>
+                        </div>
+                    </li>
+                    <li style="display: flex; gap: 1rem; align-items: flex-start;">
+                        <div class="card-icon" style="width: 40px; height: 40px; margin-bottom: 0; font-size: 1rem;"><i class="fa-solid fa-magnifying-glass"></i></div>
+                        <div>
+                            <h3 class="mb-2">Hole & Needle Line Detection</h3>
+                            <p style="font-size: 0.95rem; margin:0;">Specifically trained Convolutional Neural Networks to identify the most common knitting defects.</p>
+                        </div>
+                    </li>
+                    <li style="display: flex; gap: 1rem; align-items: flex-start;">
+                        <div class="card-icon" style="width: 40px; height: 40px; margin-bottom: 0; font-size: 1rem;"><i class="fa-solid fa-ruler-combined"></i></div>
+                        <div>
+                            <h3 class="mb-2">Defect Sizing & Positioning</h3>
+                            <p style="font-size: 0.95rem; margin:0;">Accurately logs the physical dimensions and exact coordinates of each defect on the roll.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="container grid-3">
+            <div class="card reveal delay-100 text-center">
+                <div class="card-icon mx-auto" style="margin: 0 auto 1.5rem;"><i class="fa-solid fa-bell"></i></div>
+                <h3 class="mb-2">LED + Buzzer Alerts</h3>
+                <p style="font-size: 0.9rem;">Immediate on-floor notifications for severe defects to halt production lines instantly.</p>
+            </div>
+            <div class="card reveal delay-200 text-center">
+                <div class="card-icon mx-auto" style="margin: 0 auto 1.5rem;"><i class="fa-solid fa-qrcode"></i></div>
+                <h3 class="mb-2">QR-Based Reporting</h3>
+                <p style="font-size: 0.9rem;">Generates unique QR codes for each roll containing the full defect log for downstream QA.</p>
+            </div>
+            <div class="card reveal delay-300 text-center">
+                <div class="card-icon mx-auto" style="margin: 0 auto 1.5rem;"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                <h3 class="mb-2">Cloud & Local Storage</h3>
+                <p style="font-size: 0.9rem;">Flexible data retention. Store logs locally on edge devices or sync to the cloud for global analytics.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section id="technology" style="background: var(--bg-tertiary);">
+        <div class="container text-center mb-12 reveal">
+            <span class="badge mb-4">Under the Hood</span>
+            <h2>Our Technology Stack</h2>
+        </div>
+        <div class="container grid-4">
+            <div class="card reveal delay-100">
+                <div class="card-icon"><i class="fa-solid fa-brain"></i></div>
+                <h3 class="mb-2">Deep Learning (CNN)</h3>
+                <p style="font-size: 0.9rem;">Custom-trained models optimized for fabric textures and micro-anomalies.</p>
+            </div>
+            <div class="card reveal delay-200">
+                <div class="card-icon"><i class="fa-solid fa-camera"></i></div>
+                <h3 class="mb-2">Computer Vision</h3>
+                <p style="font-size: 0.9rem;">Advanced preprocessing to handle varying lighting conditions and fabric speeds.</p>
+            </div>
+            <div class="card reveal delay-300">
+                <div class="card-icon"><i class="fa-brands fa-raspberry-pi"></i></div>
+                <h3 class="mb-2">Edge Computing</h3>
+                <p style="font-size: 0.9rem;">Deployed on industrial Raspberry Pi setups for low-latency, localized inference.</p>
+            </div>
+            <div class="card reveal delay-400">
+                <div class="card-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <h3 class="mb-2">Real-time Analytics</h3>
+                <p style="font-size: 0.9rem;">Live web sockets stream data directly to a comprehensive monitoring dashboard.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases -->
+    <section id="use-cases" style="background-color: var(--bg-primary);">
+        <div class="container grid-2 align-items-center">
+            <div class="reveal-left">
+                <span class="badge mb-4">Applications</span>
+                <h2 class="mb-4">Who Benefits from KNITX?</h2>
+                <p>Our solutions are designed to integrate seamlessly across the entire textile manufacturing lifecycle.</p>
+                <div style="margin-top: 2rem;">
+                    <div class="card mb-4" style="padding: 1.5rem;">
+                        <h3 style="font-size: 1.2rem;" class="mb-2"><i class="fa-solid fa-industry text-accent"></i> Textile Manufacturers</h3>
+                        <p style="font-size: 0.9rem; margin:0;">Detect knitting defects early to prevent defects from progressing into later production stages.</p>
+                    </div>
+                    <div class="card mb-4" style="padding: 1.5rem;">
+                        <h3 style="font-size: 1.2rem;" class="mb-2"><i class="fa-solid fa-clipboard-check text-accent"></i> Quality Control Teams</h3>
+                        <p style="font-size: 0.9rem; margin:0;">Replace subjective manual checks with objective, quantitative data on defect severity and frequency.</p>
+                    </div>
+                    <div class="card" style="padding: 1.5rem;">
+                        <h3 style="font-size: 1.2rem;" class="mb-2"><i class="fa-solid fa-warehouse text-accent"></i> Industrial Inspection Setups</h3>
+                        <p style="font-size: 0.9rem; margin:0;">Easily retrofit older rolling and folding machines with modern AI capabilities.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="reveal-right">
+                <!-- Abstract visual representation of use cases -->
+                <div style="background: var(--bg-tertiary); border-radius: 12px; padding: 3rem; border: 1px solid var(--border-color); position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; background: rgba(0,0,0,0.03); filter: blur(80px); border-radius: 50%;"></div>
+                    <div style="position: absolute; bottom: -50px; left: -50px; width: 150px; height: 150px; background: rgba(0,0,0,0.02); filter: blur(60px); border-radius: 50%;"></div>
+                    
+                    <h3 class="mb-4 text-center">ROI Calculator (Avg)</h3>
+                    <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1rem;">
+                        <span class="text-secondary">Manual Inspection Cost</span>
+                        <span style="font-family: var(--font-heading);">$45,000/yr</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1rem;">
+                        <span class="text-secondary">Material Waste Reduction</span>
+                        <span class="text-accent" style="font-family: var(--font-heading);">+ 15%</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding-bottom: 1rem; margin-bottom: 1rem;">
+                        <span class="text-secondary">Production Speed</span>
+                        <span class="text-accent" style="font-family: var(--font-heading);">+ 2x</span>
+                    </div>
+                    <a href="#contact" class="btn btn-outline" style="width: 100%; margin-top: 1rem;">Get Custom Estimate</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" style="background-color: var(--bg-secondary);">
+        <div class="container grid-2">
+            <div class="reveal-left">
+                <span class="badge mb-4">Contact Us</span>
+                <h2 class="mb-4">Ready to upgrade your inspection line?</h2>
+                <p class="mb-8">Book a demo today to see how KNITX can transform your quality control process.</p>
+                
+                <div style="display: flex; gap: 1.5rem; flex-direction: column;">
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <div class="card-icon" style="width: 40px; height: 40px; margin-bottom: 0;"><i class="fa-solid fa-envelope"></i></div>
+                        <span>hello@knitx.ai</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <div class="card-icon" style="width: 40px; height: 40px; margin-bottom: 0;"><i class="fa-solid fa-location-dot"></i></div>
+                        <span>Tech Innovation Park, Block C</span>
+                    </div>
+                </div>
+            </div>
+            <div class="reveal-right">
+                <form class="card" onsubmit="event.preventDefault(); alert('Demo requested successfully!');">
+                    <div class="form-group">
+                        <label class="form-label" for="name">Full Name</label>
+                        <input type="text" id="name" class="form-control" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="email">Work Email</label>
+                        <input type="email" id="email" class="form-control" placeholder="john@company.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="company">Company</label>
+                        <input type="text" id="company" class="form-control" placeholder="Textile Mills Ltd." required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="message">Message (Optional)</label>
+                        <textarea id="message" class="form-control" placeholder="Tell us about your inspection setup..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Book a Demo</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="#" class="logo mb-4">
+                        KNITX <span class="logo-dot"></span>
+                    </a>
+                    <p style="font-size: 0.9rem; max-width: 300px;">Weaving Intelligence into Textiles. AI-powered defect detection for modern manufacturers.</p>
+                    <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                        <a href="#" style="font-size: 1.2rem; color: var(--text-secondary);"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="#" style="font-size: 1.2rem; color: var(--text-secondary);"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="mb-4">Company</h4>
+                    <ul style="display: flex; flex-direction: column; gap: 0.8rem;">
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#technology">Technology</a></li>
+                        <li><a href="#use-cases">Use Cases</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="mb-4">Product</h4>
+                    <ul style="display: flex; flex-direction: column; gap: 0.8rem;">
+                        <li><a href="#product">Features</a></li>
+                        <li><a href="dashboard.html">Live Dashboard</a></li>
+                        <li><a href="#">Hardware Specs</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 KNITX Technologies. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS -->
+    <script src="js/main.js"></script>
+</body>
+</html>

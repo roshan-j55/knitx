@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KNITX Dashboard | Live Monitoring</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <style>
+        .dashboard-layout {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            min-height: 100vh;
+            background-color: var(--bg-primary);
+        }
+        
+        .sidebar {
+            background-color: var(--bg-secondary);
+            border-right: 1px solid var(--border-color);
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .sidebar-menu {
+            margin-top: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            color: var(--text-secondary);
+            transition: all var(--transition-fast);
+        }
+        
+        .menu-item:hover, .menu-item.active {
+            background-color: rgba(0, 255, 102, 0.1);
+            color: var(--accent-neon);
+        }
+        
+        .main-content {
+            padding: 2rem;
+            overflow-y: auto;
+        }
+        
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .stat-card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .stat-value {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .live-feed-container {
+            position: relative;
+            background-color: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            aspect-ratio: 16/9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .bounding-box {
+            position: absolute;
+            border: 2px solid var(--accent-neon);
+            background-color: rgba(0, 255, 102, 0.2);
+            box-shadow: 0 0 10px var(--accent-neon);
+            display: none;
+        }
+        
+        .bounding-box::after {
+            content: 'DEFECT (98%)';
+            position: absolute;
+            top: -25px;
+            left: -2px;
+            background-color: var(--accent-neon);
+            color: #000;
+            font-size: 0.7rem;
+            font-weight: bold;
+            padding: 2px 6px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <a href="index.html" class="logo">
+                KNITX <span class="logo-dot"></span>
+            </a>
+            
+            <nav class="sidebar-menu">
+                <a href="#" class="menu-item active">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    Overview
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fa-solid fa-video"></i>
+                    Live Camera Feed
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fa-solid fa-clipboard-list"></i>
+                    Defect Logs
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fa-solid fa-gear"></i>
+                    Settings
+                </a>
+                <a href="index.html" class="menu-item" style="margin-top: auto; color: var(--text-muted);">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    Back to Site
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="dashboard-header">
+                <div>
+                    <h2>Live Monitoring</h2>
+                    <p style="margin: 0;">Line 1 - High Speed Circular Knitting</p>
+                </div>
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <span class="badge" style="margin: 0; display: flex; align-items: center; gap: 0.5rem;">
+                        <span class="logo-dot" style="display: inline-block; animation: pulseGlow 2s infinite;"></span>
+                        System Active
+                    </span>
+                    <button class="btn btn-outline" style="padding: 0.5rem 1rem;"><i class="fa-solid fa-download"></i> Export Data</button>
+                </div>
+            </header>
+
+            <!-- Stats Grid -->
+            <div class="grid-4 mb-8">
+                <div class="stat-card">
+                    <div>
+                        <div class="stat-label">Total Rolls Inspected</div>
+                        <div class="stat-value">1,248</div>
+                    </div>
+                    <div class="card-icon" style="margin: 0; width: 48px; height: 48px;"><i class="fa-solid fa-layer-group"></i></div>
+                </div>
+                <div class="stat-card">
+                    <div>
+                        <div class="stat-label">Defects Found (Today)</div>
+                        <div class="stat-value text-accent" id="defect-counter">14</div>
+                    </div>
+                    <div class="card-icon" style="margin: 0; width: 48px; height: 48px;"><i class="fa-solid fa-magnifying-glass"></i></div>
+                </div>
+                <div class="stat-card">
+                    <div>
+                        <div class="stat-label">Avg Inspection Speed</div>
+                        <div class="stat-value">15 <span style="font-size: 1rem; color: var(--text-secondary);">FPS</span></div>
+                    </div>
+                    <div class="card-icon" style="margin: 0; width: 48px; height: 48px;"><i class="fa-solid fa-gauge"></i></div>
+                </div>
+                <div class="stat-card">
+                    <div>
+                        <div class="stat-label">Overall Quality Score</div>
+                        <div class="stat-value">98.2%</div>
+                    </div>
+                    <div class="card-icon" style="margin: 0; width: 48px; height: 48px;"><i class="fa-solid fa-check-double"></i></div>
+                </div>
+            </div>
+
+            <!-- Charts & Live Feed Grid -->
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem;">
+                <!-- Live Feed -->
+                <div class="card" style="padding: 1.5rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h3 style="margin: 0;">Camera Feed: Node A</h3>
+                        <span class="text-accent" style="font-family: monospace;" id="fps-counter">FPS: 15.2</span>
+                    </div>
+                    <div class="live-feed-container">
+                        <!-- Abstract simulated feed -->
+                        <div style="width: 100%; height: 100%; background: repeating-linear-gradient(90deg, #111, #111 10px, #1a1a1a 10px, #1a1a1a 20px); opacity: 0.5; animation: scanLine 5s linear infinite;"></div>
+                        <div class="scanner-overlay" style="box-shadow: 0 0 30px var(--accent-neon);"></div>
+                        
+                        <!-- Simulated bounding box -->
+                        <div class="bounding-box" id="bbox" style="width: 80px; height: 60px; top: 30%; left: 40%;"></div>
+                    </div>
+                </div>
+
+                <!-- Defect Chart -->
+                <div class="card" style="padding: 1.5rem;">
+                    <h3 class="mb-4">Defect Types (Last 7 Days)</h3>
+                    <div style="position: relative; height: 300px; width: 100%;">
+                        <canvas id="defectChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Recent Logs -->
+            <div class="card mt-8" style="margin-top: 2rem;">
+                <h3 class="mb-4">Recent Detections</h3>
+                <table style="width: 100%; text-align: left; border-collapse: collapse;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid var(--border-color); color: var(--text-secondary);">
+                            <th style="padding: 1rem 0;">Time</th>
+                            <th style="padding: 1rem 0;">Defect Type</th>
+                            <th style="padding: 1rem 0;">Severity</th>
+                            <th style="padding: 1rem 0;">Roll ID</th>
+                            <th style="padding: 1rem 0;">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="log-table">
+                        <tr style="border-bottom: 1px solid var(--border-color);">
+                            <td style="padding: 1rem 0;">10:24 AM</td>
+                            <td style="padding: 1rem 0;">Needle Line</td>
+                            <td style="padding: 1rem 0;"><span style="color: #ff9900;">Medium</span></td>
+                            <td style="padding: 1rem 0;">R-8492</td>
+                            <td style="padding: 1rem 0;"><a href="#" class="text-accent">View Image</a></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border-color);">
+                            <td style="padding: 1rem 0;">09:12 AM</td>
+                            <td style="padding: 1rem 0;">Hole</td>
+                            <td style="padding: 1rem 0;"><span style="color: #ff3366;">High</span></td>
+                            <td style="padding: 1rem 0;">R-8491</td>
+                            <td style="padding: 1rem 0;"><a href="#" class="text-accent">View Image</a></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border-color);">
+                            <td style="padding: 1rem 0;">08:45 AM</td>
+                            <td style="padding: 1rem 0;">Stain</td>
+                            <td style="padding: 1rem 0;"><span style="color: #00ff66;">Low</span></td>
+                            <td style="padding: 1rem 0;">R-8491</td>
+                            <td style="padding: 1rem 0;"><a href="#" class="text-accent">View Image</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        </main>
+    </div>
+
+    <!-- JS -->
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
